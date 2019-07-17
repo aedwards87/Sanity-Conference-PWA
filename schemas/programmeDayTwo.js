@@ -1,4 +1,4 @@
-import icon from 'react-icons/lib/md/local-movies'
+import icon from 'react-icons/lib/md/book'
 
 export default {
   name: 'programmeDayTwo',
@@ -23,12 +23,32 @@ export default {
     {
       name: 'timeAndDate',
       title: 'Time and date',
-      type: 'datetime'
+      type: 'datetime',
+      options: {
+        dateFormat: 'DD-MM-YYYY',
+        timeFormat: 'HH:mm',
+        timeStep: 5,
+        // calendarTodayLabel: 'Today'
+      }
     },
     {
       name: 'room',
       title: 'Room',
-      type: 'string'
+      type: 'string',
+      options: {
+        list: [
+          {title: 'Main Auditorium', value: 'mainAuditorium'},
+          {title: '1', value: '1'},
+          {title: '2-3', value: '2-3'},
+          {title: '4', value: '4'},
+          {title: '5', value: '5'},
+          {title: '6', value: '6'},
+          {title: '13', value: '13'},
+        ],
+        layout: 'dropdown',
+        direction: 'vertical',
+      },
+      validation: Rule => Rule.required()
     },
     {
       name: 'description',
@@ -53,31 +73,30 @@ export default {
     },
   ],
 
-  preview: {
-    select: {
-      title: 'title',
-      timeAndDate: 'timeAndDate',
-      room: 'room',
-    }
-  }
-
   // preview: {
   //   select: {
   //     title: 'title',
-  //     date: 'timeAndDate',
-  //     castName0: 'castMembers.0.person.name',
-  //     castName1: 'castMembers.1.person.name'
-  //   },
-  //   prepare(selection) {
-  //     const year = selection.date && selection.date.split('-')[0]
-  //     const cast = [selection.castName0, selection.castName1].filter(Boolean).join(', ')
-
-  //     return {
-  //       title: `${selection.title} ${year ? `(${year})` : ''}`,
-  //       date: selection.date,
-  //       subtitle: cast,
-  //       media: selection.media
-  //     }
+  //     timeAndDate: 'timeAndDate',
+  //     room: 'room',
   //   }
   // }
+
+  preview: {
+    select: {
+      title: 'title',
+      date: 'timeAndDate',
+      speakerName0: 'speaker.0.name',
+      speakerName1: 'speaker.1.name',
+      room: 'room'
+    },
+    prepare(selection) {
+      const speaker = [selection.speakerName0, selection.speakerName1].filter(Boolean).join(', ')
+      const room = selection.room
+
+      return {
+        title: `${selection.title}`,
+        subtitle: `Speakers: ${speaker}`,
+      }
+    }
+  }
 }

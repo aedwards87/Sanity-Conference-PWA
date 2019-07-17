@@ -1,4 +1,4 @@
-import icon from 'react-icons/lib/md/local-attraction'
+import icon from 'react-icons/lib/md/art-track'
 
 export default {
   name: 'exhibitors',
@@ -29,12 +29,33 @@ export default {
       }
     },
     {
+      name: 'sponsorLevel',
+      title: 'Sponsor Level',
+      type: 'string',
+      // of: [{type: 'string'}],
+      options: {
+        list: [
+          {title: 'Headline', value: 'headline'},
+          {title: 'Gold', value: 'gold'},
+          {title: 'Silver', value: 'silver'},
+        ],
+        layout: 'radio',
+        direction: 'vertical',
+      },
+      validation: Rule => Rule.required()
+    },
+    {
       name: 'description',
       title: 'Description',
       type: 'text'
     },
+    {
+      name: 'stand',
+      title: 'Stand',
+      type: 'number'
+    },
   ],
   preview: {
-    select: {title: 'name',  media: 'photo'}
+    select: {title: 'sponsorName',  media: 'photo', subtitle: 'sponsorLevel'}
   }
 }

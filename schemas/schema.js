@@ -15,7 +15,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 import programmeDayOne from './programmeDayOne'
 import programmeDayTwo from './programmeDayTwo'
 import speaker from './speaker'
-// import streamedSessions from './streamedSessions'
+import streamedSessions from './streamedSessions'
 import exhibitors from './exhibitors'
 // import map from './map'
 
@@ -33,8 +33,8 @@ export default createSchema({
     // screening,
     programmeDayOne,
     programmeDayTwo,
+    streamedSessions,
     speaker,
-    // streamedSessions,
     exhibitors,
     // map,
     // When added to this list, object types can be used as

@@ -48,23 +48,39 @@ export default {
         layout: 'dropdown',
         direction: 'vertical',
       },
-      validation: Rule => Rule.required()
     },
     {
       name: 'description',
       title: 'Description',
       type: 'text'
     },
+    // {
+    //   name: 'streamedSessions',
+    //   title: 'Streamed Sessions',
+    //   type: 'array',
+    //   of: [{
+    //     type: 'reference',
+    //     to: [
+    //       { type: 'streamedSessions' },
+    //     ],
+    //   }]
+    // },
     {
       name: 'streamedSessions',
-      title: 'Streamed Sessions',
-      type: 'array',
-      of: [{
-        type: 'reference',
-        to: [
-          { type: 'streamedSessions' },
+      title: 'Streamed Session',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'Type 1', value: 'type1'},
+          {title: 'Type 2', value: 'type2'},
+          {title: 'Type 3', value: 'type3'},
+          {title: 'Type 4', value: 'type4'},
+          {title: 'Type 5', value: 'type5'},
+          {title: 'Type 6', value: 'type6'},
         ],
-      }]
+        layout: 'radio',
+        direction: 'vertical',
+      },
     },
     {
       name: 'speaker',
